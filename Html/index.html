@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <title>Pizza</title>
+</head>
+
+<body>
+
+<h1 class="title">Pizza</h1>
+  <div align ="center" class="profile-area">
+    <div class="container" id="card">
+      <div class="row gy-3">
+        <script>
+            //Syntax to fetch data from index.php
+            const xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "http://json.test/Php/index.php");
+            xmlhttp.send();
+            xmlhttp.onload = function() {
+                const pizzas = JSON.parse(this.responseText).pizzas;
+                const table = document.getElementById('card');
+                if(table){
+                  for(const i in pizzas){
+                    const row =`
+                          <div class="col-md-4 mt-5">
+                              <div class="card rgb">
+                                  <div class="img1"><img src="${pizzas[i].pizza_image}" alt=""></div>
+                                  <div class="img2"><img src="${pizzas[i].brand_image}" alt=""></div>
+                                  <div class="main-text">
+                                      <h2>${pizzas[i].pizza_name}</h2>
+                                      <ul class="details">
+                                          <li>Pizza Price:    ${pizzas[i].pizza_price}</li>
+                                          <li>Pizza Size:     ${pizzas[i].pizza_size} </li>
+                                          <li>Prize Brand:    ${pizzas[i].pizza_brand}</li>
+                                      </ul>
+                                      <p>${pizzas[i].pizza_description}</p>
+                                  </div>
+                              </div>
+                        </div>
+                    `;
+                    table.innerHTML += row;
+                  }
+                }
+              }
+          //To catch errors
+          //.catch(error => console.error(error));
+          </script>
+        </div>
+      </div>
+  </div>
+
+  <footer class="bg-light text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a
+          class="btn text-white btn-floating m-1 socials"
+          style="background-color: #3b5998;"
+          href="https://www.facebook.com/ramesesrenz.quizon" target="_blank"
+          role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a
+          class="btn text-white btn-floating m-1 socials"
+          style="background-color: #55acee;"
+          href="https://twitter.com/RenzQuizon3" target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a
+          class="btn text-white btn-floating m-1 socials"
+          style="background-color: #ac2bac;"
+          href="https://www.instagram.com/ramzessss19/" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+
+        <!-- Github -->
+        <a
+          class="btn text-white btn-floating m-1 socials"
+          style="background-color: #333333;"
+          href="https://github.com/renzquizon19" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Developed by: Renz Quizon
+      BSIT - 3B
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+</body>
+</html> 
